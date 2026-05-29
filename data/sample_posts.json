@@ -178,5 +178,203 @@
     "text": "Working nights wrecks my mental health. No therapist has hours that work for me and I'm always too wired to sleep after a shift. Anyone found something that fits a weird schedule?",
     "context": "nurse, 3k followers",
     "is_real": false
+  },
+  {
+    "id": "p21",
+    "platform": "instagram",
+    "author": "@softlife.sana",
+    "url": "https://example.com/mock/p21",
+    "text": "3 things that helped my anxiety this year: morning walks, putting my phone in another room, and finally starting therapy. Save this if you needed the reminder 🤍",
+    "context": "wellness creator, 28k followers, potential partner",
+    "is_real": false
+  },
+  {
+    "id": "p22",
+    "platform": "instagram",
+    "author": "@thedailycalm.co",
+    "url": "https://example.com/mock/p22",
+    "text": "Your nervous system isn't broken, it's protecting you. Comment a 🌿 if you're working on feeling safe in your body again.",
+    "context": "mental-health page, 54k followers, potential partner",
+    "is_real": false
+  },
+  {
+    "id": "p23",
+    "platform": "instagram",
+    "author": "@marco.runs",
+    "url": "https://example.com/mock/p23",
+    "text": "Marathon training update: week 9. Legs tired, brain quiet. Running is the only time my overthinking shuts up. Anyone else use exercise for their head not just their body?",
+    "context": "fitness creator, 12k followers",
+    "is_real": false
+  },
+  {
+    "id": "p24",
+    "platform": "instagram",
+    "author": "@newmama.theo",
+    "url": "https://example.com/mock/p24",
+    "text": "Nobody warned me how lonely the newborn stage would be. Up at 3am feeling completely isolated. Is this normal or am I struggling more than I should be?",
+    "context": "parenting account, 4k followers",
+    "is_real": false
+  },
+  {
+    "id": "p25",
+    "platform": "reddit",
+    "author": "fading_quietly",
+    "url": "https://example.com/mock/p25",
+    "text": "I just can't keep doing this. Every day feels heavier than the last and I'm so tired of pretending I'm okay. I don't know how much longer I can hold on.",
+    "context": "r/depression, posted 8 min ago",
+    "is_real": false
+  },
+  {
+    "id": "p26",
+    "platform": "instagram",
+    "author": "@quiet_em",
+    "url": "https://example.com/mock/p26",
+    "text": "if anyone doesn't hear from me for a while just know i tried my best. i'm just really done.",
+    "context": "private-style account, 600 followers",
+    "is_real": false
+  },
+  {
+    "id": "p27",
+    "platform": "instagram",
+    "author": "@volleyball.kayla",
+    "url": "https://example.com/mock/p27",
+    "text": "starting 11th grade next week and the panic is already setting in 😭 how do you deal with school stress",
+    "context": "bio: 🏐 c/o 2028",
+    "is_real": false
+  },
+  {
+    "id": "p28",
+    "platform": "x",
+    "author": "@minecraft_jayden",
+    "url": "https://example.com/mock/p28",
+    "text": "my mom won't let me see a therapist she says im too young at 16 but i really think i need to talk to someone",
+    "context": "student account",
+    "is_real": false
+  },
+  {
+    "id": "p29",
+    "platform": "reddit",
+    "author": "weaning_off_throwaway",
+    "url": "https://example.com/mock/p29",
+    "text": "Has anyone stopped their antidepressants cold turkey? I hate the side effects and want to quit this week. Is that fine to just do?",
+    "context": "r/antidepressants, 30 upvotes",
+    "is_real": false
+  },
+  {
+    "id": "p30",
+    "platform": "instagram",
+    "author": "@holistic.heather",
+    "url": "https://example.com/mock/p30",
+    "text": "Big pharma doesn't want you to know this: you can replace your SSRIs with this one supplement. DM me for the protocol 💊✨",
+    "context": "sells supplements, 9k followers",
+    "is_real": false
+  },
+  {
+    "id": "p31",
+    "platform": "reddit",
+    "author": "day_three_again",
+    "url": "https://example.com/mock/p31",
+    "text": "Day 3 sober again after relapsing last month. The cravings hit hardest at night when I'm alone with my thoughts. Trying to stay hopeful.",
+    "context": "r/stopdrinking, 210 upvotes",
+    "is_real": false
+  },
+  {
+    "id": "p32",
+    "platform": "x",
+    "author": "@trying_to_recover",
+    "url": "https://example.com/mock/p32",
+    "text": "Recovery is so hard. Some days I feel okay about food and other days the guilt is overwhelming. Just trying to be kinder to myself today.",
+    "context": "recovery account, 1k followers",
+    "is_real": false
+  },
+  {
+    "id": "p33",
+    "platform": "instagram",
+    "author": "@aesthetic.aria",
+    "url": "https://example.com/mock/p33",
+    "text": "saw a reel about ADHD and now i think i have it AND autism AND anxiety. like every symptom was me?? should i just diagnose myself or",
+    "context": "20k followers",
+    "is_real": false
+  },
+  {
+    "id": "p34",
+    "platform": "instagram",
+    "author": "@travelwithdev",
+    "url": "https://example.com/mock/p34",
+    "text": "Sunset in Lisbon hits different 🌅 swipe for the view from our airbnb. Already planning the next trip!",
+    "context": "travel creator, 40k followers",
+    "is_real": false
+  },
+  {
+    "id": "p35",
+    "platform": "x",
+    "author": "@gridiron_greg",
+    "url": "https://example.com/mock/p35",
+    "text": "What a game last night!! That last-minute touchdown had me STRESSED but we pulled it off 🏈🔥",
+    "context": "sports fan account",
+    "is_real": false
+  },
+  {
+    "id": "p36",
+    "platform": "x",
+    "author": "@deadline_dana",
+    "url": "https://example.com/mock/p36",
+    "text": "so stressed my favorite show got cancelled on a cliffhanger, the betrayal 😩",
+    "context": "general account",
+    "is_real": false
+  },
+  {
+    "id": "p37",
+    "platform": "reddit",
+    "author": "scared_user_44",
+    "url": "https://example.com/mock/p37",
+    "text": "My ex keeps showing up. Here is my full name, my apartment number, and where I work in case anything happens to me. I'm terrified.",
+    "context": "r/stalking, posted 20 min ago",
+    "is_real": false
+  },
+  {
+    "id": "p38",
+    "platform": "reddit",
+    "author": "right_now_throwaway",
+    "url": "https://example.com/mock/p38",
+    "text": "I have the pills in front of me right now. I don't want to do this but I don't see another way out. Someone please tell me why I shouldn't.",
+    "context": "r/SuicideWatch, posted 3 min ago",
+    "is_real": false
+  },
+  {
+    "id": "p39",
+    "platform": "instagram",
+    "author": "@mindset.money.king",
+    "url": "https://example.com/mock/p39",
+    "text": "Struggling with anxiety? I CURED mine in 7 days with my mindset method. Limited spots — comment GROWTH and I'll DM you the link 🚀💰",
+    "context": "150 followers, posts identical comments everywhere",
+    "is_real": false
+  },
+  {
+    "id": "p40",
+    "platform": "instagram",
+    "author": "@drlena.therapy",
+    "url": "https://example.com/mock/p40",
+    "text": "Therapy isn't about fixing you, it's about understanding you. If cost or access has been a barrier for you, I'd love to hear what's gotten in your way.",
+    "context": "licensed therapist + educator, 88k followers, potential partner",
+    "is_real": false
+  },
+  {
+    "id": "p41",
+    "platform": "x",
+    "author": "@one_year_today",
+    "url": "https://example.com/mock/p41",
+    "text": "One year of consistent therapy today. I'm not 'fixed' but I finally have tools and I actually like myself most days. To anyone on the fence: it's worth it.",
+    "context": "5k followers",
+    "is_real": false
+  },
+  {
+    "id": "p42",
+    "platform": "instagram",
+    "author": "@just_maya_things",
+    "url": "https://example.com/mock/p42",
+    "text": "everything is just a lot right now and i feel like i'm drowning. not in a scary way just... so overwhelmed i can't think straight.",
+    "context": "8k followers",
+    "is_real": false
   }
 ]

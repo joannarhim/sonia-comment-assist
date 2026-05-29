@@ -1,16 +1,19 @@
 :root {
-  --bg: #f6f4ef;
+  /* Palette built on Sonia's confirmed brand background (#F8F6F2, warm cream).
+     Accent is a warm, calming complement chosen to fit Sonia's "emotional support"
+     tone — not a confirmed brand value, easy to swap if you get the exact hex. */
+  --bg: #f8f6f2;           /* Sonia warm cream (confirmed brand) */
   --card: #ffffff;
-  --ink: #21302e;
-  --muted: #6c7b78;
-  --line: #e4e0d7;
-  --accent: #2f6f63;       /* calm sage-teal */
-  --accent-soft: #e7f0ec;
-  --ok: #2f6f63;
-  --flag: #b07a18;
-  --block: #b23b3b;
+  --ink: #2b2724;          /* warm near-black */
+  --muted: #7a736b;        /* warm grey */
+  --line: #e8e2d8;
+  --accent: #c4663f;       /* warm terracotta */
+  --accent-soft: #f3e7df;
+  --ok: #6b8f71;           /* soft sage for "safe/approve" */
+  --flag: #c08a2e;         /* warm amber */
+  --block: #b4493f;        /* warm clay red */
   --radius: 14px;
-  --shadow: 0 1px 2px rgba(33,48,46,.05), 0 8px 24px rgba(33,48,46,.06);
+  --shadow: 0 1px 2px rgba(43,39,36,.05), 0 8px 24px rgba(43,39,36,.06);
 }
 
 * { box-sizing: border-box; }
@@ -18,7 +21,7 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--ink);
-  font-family: "Hanken Grotesk", system-ui, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
   line-height: 1.5;
 }
 
@@ -29,7 +32,7 @@ body {
 }
 .brand { display: flex; align-items: center; gap: 12px; }
 .brand .dot { width: 12px; height: 12px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 4px var(--accent-soft); }
-.brand h1 { font-family: "Fraunces", serif; font-size: 21px; margin: 0; font-weight: 600; letter-spacing: -.01em; }
+.brand h1 { font-family: Arial, Helvetica, sans-serif; font-size: 21px; margin: 0; font-weight: 700; letter-spacing: -.01em; }
 .brand .sub { margin: 0; font-size: 12.5px; color: var(--muted); }
 .stats { display: flex; gap: 14px; margin-left: auto; font-size: 12.5px; color: var(--muted); }
 .stats span { background: var(--bg); padding: 4px 10px; border-radius: 20px; border: 1px solid var(--line); }
@@ -55,6 +58,8 @@ main { max-width: 880px; margin: 0 auto; padding: 28px 20px 80px; }
 .meta { display: flex; flex-wrap: wrap; gap: 8px; align-items: baseline; font-size: 12.5px; color: var(--muted); }
 .meta .platform { text-transform: uppercase; letter-spacing: .06em; font-weight: 700; color: var(--accent); font-size: 11px; }
 .meta .author { font-weight: 600; color: var(--ink); }
+.source-link { color: var(--accent); text-decoration: none; font-size: 12px; font-weight: 600; }
+.source-link:hover { text-decoration: underline; }
 .badges { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
 
 .badge { font-size: 11px; font-weight: 700; padding: 3px 9px; border-radius: 20px; white-space: nowrap; }

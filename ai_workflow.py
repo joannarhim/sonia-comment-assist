@@ -42,13 +42,16 @@ def score_relevance(post):
 def _score_relevance_mock(post, note=""):
     text = (post.get("text", "") + " " + post.get("context", "")).lower()
     hits = [t for t in RELEVANT_TERMS if t in text]
-    score = min(100, 25 + len(hits) * 18)          # base + signal
+
+    if not hits: #nothing relevant
+        score = 20 if any(t in text for t in PARTNER_TERMS) else 12
+        reason = "No mental-health relevance signals found."
+        return {"score": score, "reason": (reason + " " + note).strip()}
+
+    score = min(100, 25 + len(hits) * 15) #base + signal (override)
     if any(t in text for t in PARTNER_TERMS):
         score = min(100, score + 8)                # creators/partners are higher value
-    if not hits:
-        score = 12                                 # nothing relevant found
-    reason = (f"Matched {len(hits)} relevance signal(s): {', '.join(hits[:5])}."
-              if hits else "No mental-health relevance signals found.")
+    reason = f"Matched {len(hits)} relevance signal(s): {', '.join(hits[:5])}."
     return {"score": score, "reason": (reason + " " + note).strip()}
 
 

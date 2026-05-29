@@ -4,9 +4,6 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Sonia · Comment-Assist Review Queue</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
 </head>
 <body>
@@ -14,8 +11,8 @@
     <div class="brand">
       <span class="dot"></span>
       <div>
-        <h1>Comment-Assist</h1>
-        <p class="sub">Sonia growth · human-in-the-loop review queue</p>
+        <h1>Comment-Assist Prototype for Sonia Health</h1>
+        <p class="sub">Human-in-the-loop review queue</p>
       </div>
     </div>
     <div class="stats" id="stats"></div>
@@ -38,6 +35,7 @@
           <span class="platform"></span>
           <span class="author"></span>
           <span class="context"></span>
+          <a class="source-link" target="_blank" rel="noopener">View source ↗</a>
         </div>
         <div class="badges"></div>
       </div>
@@ -84,6 +82,13 @@
         tpl.querySelector(".author").textContent = p.author;
         tpl.querySelector(".context").textContent = p.context || "";
         tpl.querySelector(".post-text").textContent = p.text;
+
+        const srcLink = tpl.querySelector(".source-link");
+        if (p.url) {
+          srcLink.href = p.url;
+        } else {
+          srcLink.style.display = "none";
+        }
 
         const [label, kind] = statusFromGate(it.engage);
         counts[kind === "ok" ? "ok" : kind]++;

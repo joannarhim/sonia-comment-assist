@@ -1,4 +1,4 @@
-# Sonia · Comment-Assist (Prototype)
+# Sonia Health: Comment-Assist Prototype
 
 A small human-in-the-loop tool that helps Sonia's growth team find relevant public
 posts, draft thoughtful comments, and **review every comment before anything is posted**.
