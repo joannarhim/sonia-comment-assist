@@ -1,6 +1,3 @@
-# sonia-comment-assist
-Growth Engineering / Comment-Assist Prototype Take-Home
-
 # Sonia · Comment-Assist (Prototype)
 
 A small human-in-the-loop tool that helps Sonia's growth team find relevant public
@@ -11,6 +8,8 @@ that are specific, kind, useful, and safe.
 Because Sonia is a **mental-health** product, the safety layer is the centerpiece: the
 tool refuses to engage with crisis posts, minors, and acute-emergency situations, and a
 second gate blocks any drafted comment that diagnoses, claims to cure/treat, or reads as spam.
+
+![dashboard](screenshot.png)
 
 ## Quick start (runs with no API key)
 

@@ -1,0 +1,182 @@
+[
+  {
+    "id": "p01",
+    "platform": "reddit",
+    "author": "tired_in_tuesdays",
+    "url": "https://example.com/mock/p01",
+    "text": "Therapy waitlist in my city is 4 months long and I can't afford $180 a session out of pocket. How is anyone supposed to actually get help? Feeling pretty stuck.",
+    "context": "r/mentalhealth, 87 upvotes",
+    "is_real": false
+  },
+  {
+    "id": "p02",
+    "platform": "x",
+    "author": "@maya_writes",
+    "url": "https://example.com/mock/p02",
+    "text": "Started journaling 10 minutes every morning before work and my anxiety is noticeably lower. Small habits, big difference. What are your go-to grounding routines?",
+    "context": "wellness creator, 14k followers",
+    "is_real": false
+  },
+  {
+    "id": "p03",
+    "platform": "reddit",
+    "author": "burntout_dev",
+    "url": "https://example.com/mock/p03",
+    "text": "Six months into a new job and I think I'm burned out. Tired all the time, dreading mornings, snapping at people I love. Anyone been here and come out the other side?",
+    "context": "r/cscareerquestions, 240 upvotes",
+    "is_real": false
+  },
+  {
+    "id": "p04",
+    "platform": "x",
+    "author": "@calm_coach_jen",
+    "url": "https://example.com/mock/p04",
+    "text": "Reminder that CBT is about noticing the thought, not believing every thought. You are not your 3am brain. Drop a tool that helps you reframe.",
+    "context": "CBT coach, 31k followers, potential partner",
+    "is_real": false
+  },
+  {
+    "id": "p05",
+    "platform": "reddit",
+    "author": "newgrad_2026",
+    "url": "https://example.com/mock/p05",
+    "text": "Moved to a new city for work, don't know anyone, and the loneliness is hitting harder than I expected. How do people make friends as an adult?",
+    "context": "r/lonely, 52 upvotes",
+    "is_real": false
+  },
+  {
+    "id": "p06",
+    "platform": "x",
+    "author": "@runner_pri",
+    "url": "https://example.com/mock/p06",
+    "text": "PSA: running did not cure my depression but it gave me 30 minutes where the noise got quieter. That was enough to start. Stack the small wins.",
+    "context": "fitness creator, 9k followers",
+    "is_real": false
+  },
+  {
+    "id": "p07",
+    "platform": "reddit",
+    "author": "anon_throwaway_88",
+    "url": "https://example.com/mock/p07",
+    "text": "I don't want to be here anymore. Nothing helps and I'm tired of trying. I don't see a point in waking up tomorrow.",
+    "context": "r/depression, posted 12 min ago",
+    "is_real": false
+  },
+  {
+    "id": "p08",
+    "platform": "x",
+    "author": "@studyhard_2027",
+    "url": "https://example.com/mock/p08",
+    "text": "im 15 and my anxiety before tests is so bad i feel like throwing up. is that normal?? my parents say im being dramatic",
+    "context": "student account, bio says high school sophomore",
+    "is_real": false
+  },
+  {
+    "id": "p09",
+    "platform": "reddit",
+    "author": "confused_mind_22",
+    "url": "https://example.com/mock/p09",
+    "text": "My moods swing really hard, like super high energy for days then crashing. Do I have bipolar disorder? Should I just self-diagnose from online checklists?",
+    "context": "r/AskDocs, 18 upvotes",
+    "is_real": false
+  },
+  {
+    "id": "p10",
+    "platform": "x",
+    "author": "@grief_and_grace",
+    "url": "https://example.com/mock/p10",
+    "text": "One year since I lost my mom. Grief isn't linear, it just shows up on a Tuesday in the cereal aisle. Sending love to anyone in year one.",
+    "context": "8k followers",
+    "is_real": false
+  },
+  {
+    "id": "p11",
+    "platform": "reddit",
+    "author": "spreadsheet_sam",
+    "url": "https://example.com/mock/p11",
+    "text": "Best crypto to buy this dip? Trying to 10x before summer. Drop your bags.",
+    "context": "r/cryptomoonshots, 4 upvotes",
+    "is_real": false
+  },
+  {
+    "id": "p12",
+    "platform": "x",
+    "author": "@therapy_thoughts",
+    "url": "https://example.com/mock/p12",
+    "text": "Unpopular opinion: 'just download a meditation app' is not a substitute for actual mental health support, but it's a fine first step. Both/and, not either/or.",
+    "context": "mental health writer, 22k followers, potential partner",
+    "is_real": false
+  },
+  {
+    "id": "p13",
+    "platform": "reddit",
+    "author": "overwhelmed_mom3",
+    "url": "https://example.com/mock/p13",
+    "text": "Three kids, full time job, and I cried in the car today for no reason. I think I need help but I genuinely don't have time or money for weekly therapy.",
+    "context": "r/Mommit, 130 upvotes",
+    "is_real": false
+  },
+  {
+    "id": "p14",
+    "platform": "x",
+    "author": "@mindful_marco",
+    "url": "https://example.com/mock/p14",
+    "text": "Breathwork tip: box breathing (4 in, 4 hold, 4 out, 4 hold) before a stressful meeting. Cheap, free, works. What's your pre-meeting reset?",
+    "context": "wellness creator, 17k followers",
+    "is_real": false
+  },
+  {
+    "id": "p15",
+    "platform": "reddit",
+    "author": "quiet_quitting_qa",
+    "url": "https://example.com/mock/p15",
+    "text": "Does anyone else feel anxious on Sunday nights to the point you can't sleep? The dread is so real. Looking for things that actually helped.",
+    "context": "r/anxiety, 76 upvotes",
+    "is_real": false
+  },
+  {
+    "id": "p16",
+    "platform": "x",
+    "author": "@founder_fuel",
+    "url": "https://example.com/mock/p16",
+    "text": "Hustle culture broke me. Took 3 months off, started therapy, and my company is doing better than when I was grinding 90 hour weeks. Rest is strategy.",
+    "context": "startup founder, 45k followers, potential partner",
+    "is_real": false
+  },
+  {
+    "id": "p17",
+    "platform": "reddit",
+    "author": "scared_and_sharing",
+    "url": "https://example.com/mock/p17",
+    "text": "My husband [name redacted in mock] has been hitting me and I'm scared to leave. I have his work address and our home address here in case something happens. I don't know what to do.",
+    "context": "r/domesticviolence, posted 30 min ago",
+    "is_real": false
+  },
+  {
+    "id": "p18",
+    "platform": "x",
+    "author": "@deal_blast_daily",
+    "url": "https://example.com/mock/p18",
+    "text": "FLASH SALE 70% OFF SUPPLEMENTS DM ME NOW limited spots link in bio click fast guaranteed results",
+    "context": "200 followers, posts identical text hourly",
+    "is_real": false
+  },
+  {
+    "id": "p19",
+    "platform": "reddit",
+    "author": "first_session_nerves",
+    "url": "https://example.com/mock/p19",
+    "text": "I finally booked my first ever therapy appointment for next week and I'm weirdly nervous. What should I expect? Did it help you?",
+    "context": "r/therapy, 95 upvotes",
+    "is_real": false
+  },
+  {
+    "id": "p20",
+    "platform": "x",
+    "author": "@nightshift_nina",
+    "url": "https://example.com/mock/p20",
+    "text": "Working nights wrecks my mental health. No therapist has hours that work for me and I'm always too wired to sleep after a shift. Anyone found something that fits a weird schedule?",
+    "context": "nurse, 3k followers",
+    "is_real": false
+  }
+]

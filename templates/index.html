@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sonia · Comment-Assist Review Queue</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="dot"></span>
+      <div>
+        <h1>Comment-Assist</h1>
+        <p class="sub">Sonia growth · human-in-the-loop review queue</p>
+      </div>
+    </div>
+    <div class="stats" id="stats"></div>
+    <a class="export" href="/api/export" target="_blank">Export decisions ↗</a>
+  </header>
+
+  <main>
+    <p class="legend">
+      Every post passes a <strong>safety gate</strong> before a comment is drafted, and every
+      draft passes a second <strong>comment gate</strong>. Nothing is ever posted automatically —
+      a human approves, edits, rejects, or marks unsafe.
+    </p>
+    <div id="queue" class="queue"><p class="loading">Loading review queue…</p></div>
+  </main>
+
+  <template id="card-tpl">
+    <article class="card">
+      <div class="card-head">
+        <div class="meta">
+          <span class="platform"></span>
+          <span class="author"></span>
+          <span class="context"></span>
+        </div>
+        <div class="badges"></div>
+      </div>
+      <p class="post-text"></p>
+      <div class="analysis"></div>
+      <div class="draft-zone"></div>
+      <div class="decision-row"></div>
+    </article>
+  </template>
+
+  <script>
+    const fmt = (s) => (s || "").toString();
+
+    async function load() {
+      const res = await fetch("/api/posts");
+      const data = await res.json();
+      render(data);
+    }
+
+    function badge(label, kind) {
+      const el = document.createElement("span");
+      el.className = "badge badge-" + kind;
+      el.textContent = label;
+      return el;
+    }
+
+    function statusFromGate(engage) {
+      if (engage.status === "block") return ["BLOCKED · " + engage.category, "block"];
+      if (engage.status === "flag") return ["FLAG · " + engage.category, "flag"];
+      return ["SAFE TO ENGAGE", "ok"];
+    }
+
+    function render(items) {
+      const queue = document.getElementById("queue");
+      queue.innerHTML = "";
+      let counts = { ok: 0, flag: 0, block: 0, decided: 0 };
+
+      items.forEach((it) => {
+        const tpl = document.getElementById("card-tpl").content.cloneNode(true);
+        const card = tpl.querySelector(".card");
+        const p = it.post;
+
+        tpl.querySelector(".platform").textContent = p.platform;
+        tpl.querySelector(".author").textContent = p.author;
+        tpl.querySelector(".context").textContent = p.context || "";
+        tpl.querySelector(".post-text").textContent = p.text;
+
+        const [label, kind] = statusFromGate(it.engage);
+        counts[kind === "ok" ? "ok" : kind]++;
+        const badges = tpl.querySelector(".badges");
+        badges.appendChild(badge("Relevance " + it.relevance.score, "score"));
+        badges.appendChild(badge(label, kind));
+        card.classList.add("kind-" + kind);
+
+        // analysis text
+        const analysis = tpl.querySelector(".analysis");
+        analysis.innerHTML =
+          `<div><b>Relevance:</b> ${fmt(it.relevance.reason)}</div>` +
+          `<div><b>Safety:</b> ${it.engage.reasons.map(fmt).join(" ")}</div>`;
+
+        const draftZone = tpl.querySelector(".draft-zone");
+        const decisionRow = tpl.querySelector(".decision-row");
+
+        if (it.engage.status === "block") {
+          draftZone.innerHTML = `<div class="blocked-note">No comment drafted — post blocked by safety gate.</div>`;
+          decisionRow.innerHTML = "";
+          const ack = document.createElement("button");
+          ack.className = "btn btn-reject";
+          ack.textContent = "Acknowledge & skip";
+          ack.onclick = () => decide(p.id, "rejected", null, "Acknowledged blocked post.", card);
+          decisionRow.appendChild(ack);
+        } else {
+          const cc = it.comment_check || { status: "ok", reasons: [] };
+          const ccBadge =
+            cc.status === "unsafe" ? "badge-block" :
+            cc.status === "flag" ? "badge-flag" : "badge-ok";
+          draftZone.innerHTML = `
+            <label class="lbl">Draft comment
+              <span class="badge ${ccBadge}">comment: ${cc.status}</span>
+            </label>
+            <textarea class="draft">${fmt(it.draft)}</textarea>
+            <div class="cc-reasons">${cc.reasons.map(fmt).join(" ")}</div>
+            <input class="note" placeholder="Reviewer note (optional)" />`;
+
+          const ta = draftZone.querySelector(".draft");
+          const note = draftZone.querySelector(".note");
+
+          const mk = (txt, cls, status, useEdited) => {
+            const b = document.createElement("button");
+            b.className = "btn " + cls;
+            b.textContent = txt;
+            b.onclick = () =>
+              decide(p.id, status, useEdited ? ta.value : it.draft, note.value, card);
+            return b;
+          };
+          decisionRow.appendChild(mk("Approve", "btn-approve", "approved", false));
+          decisionRow.appendChild(mk("Save edit", "btn-edit", "edited", true));
+          decisionRow.appendChild(mk("Reject", "btn-reject", "rejected", false));
+          decisionRow.appendChild(mk("Mark unsafe", "btn-unsafe", "unsafe", false));
+        }
+
+        if (it.decision) {
+          counts.decided++;
+          renderDecision(card, it.decision);
+        }
+        queue.appendChild(tpl);
+      });
+
+      document.getElementById("stats").innerHTML =
+        `<span>${counts.ok} safe</span><span>${counts.flag} flagged</span>` +
+        `<span>${counts.block} blocked</span><span>${counts.decided} decided</span>`;
+    }
+
+    function renderDecision(card, d) {
+      card.classList.add("has-decision");
+      let strip = card.querySelector(".decided-strip");
+      if (!strip) {
+        strip = document.createElement("div");
+        strip.className = "decided-strip";
+        card.appendChild(strip);
+      }
+      strip.innerHTML =
+        `<b>Decision:</b> ${d.status}` +
+        (d.final_comment ? ` · "${fmt(d.final_comment)}"` : "") +
+        (d.reviewer_note ? ` · note: ${fmt(d.reviewer_note)}` : "") +
+        ` · ${fmt(d.decided_at)}`;
+    }
+
+    async function decide(post_id, status, final_comment, reviewer_note, card) {
+      const res = await fetch("/api/decision", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ post_id, status, final_comment, reviewer_note }),
+      });
+      const out = await res.json();
+      if (out.decision) renderDecision(card, out.decision);
+    }
+
+    load();
+  </script>
+</body>
+</html>
