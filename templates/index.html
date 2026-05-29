@@ -12,7 +12,6 @@
       <span class="dot"></span>
       <div>
         <h1>Comment-Assist Prototype for Sonia Health</h1>
-        <p class="sub">Human-in-the-loop review queue</p>
       </div>
     </div>
     <div class="stats" id="stats"></div>
@@ -22,8 +21,8 @@
   <main>
     <p class="legend">
       Every post passes a <strong>safety gate</strong> before a comment is drafted, and every
-      draft passes a second <strong>comment gate</strong>. Nothing is ever posted automatically —
-      a human approves, edits, rejects, or marks unsafe.
+      draft passes a second <strong>comment gate</strong>. All comments require a human to
+      approve, edit, reject, or mark unsafe.
     </p>
     <div id="queue" class="queue"><p class="loading">Loading review queue…</p></div>
   </main>
@@ -62,6 +61,17 @@
       return el;
     }
 
+    // Inline SVG brand glyphs (monochrome, inherit the platform label color).
+    function platformIcon(platform) {
+      const p = (platform || "").toLowerCase();
+      const icons = {
+        reddit: '<svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm5.6 11.1c.02.16.03.32.03.48 0 2.45-2.85 4.43-6.37 4.43s-6.37-1.98-6.37-4.43c0-.16.01-.32.03-.48a1.46 1.46 0 01-.83-1.32 1.46 1.46 0 012.4-1.12 7.2 7.2 0 013.86-1.2l.73-3.43a.31.31 0 01.37-.24l2.43.52a1.04 1.04 0 11-.13.6l-2.16-.46-.65 3.07a7.2 7.2 0 013.8 1.2 1.46 1.46 0 112.32 1.18 1.46 1.46 0 01-.79 1.26zM9 13.3a1.04 1.04 0 102.08 0A1.04 1.04 0 009 13.3zm5.92 2.5a.31.31 0 00-.43-.02c-.5.4-1.27.6-2.07.6s-1.57-.2-2.07-.6a.31.31 0 10-.4.47c.63.51 1.54.76 2.47.76s1.84-.25 2.47-.76a.31.31 0 00.03-.45zm-.96-1.46a1.04 1.04 0 102.08 0 1.04 1.04 0 00-2.08 0z"/></svg>',
+        x: '<svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.66l-5.214-6.817-5.967 6.817H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.45-6.231zm-1.161 17.52h1.833L7.084 4.126H5.117l11.966 15.644z"/></svg>',
+        instagram: '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg>',
+      };
+      return icons[p] || "";
+    }
+
     function statusFromGate(engage) {
       if (engage.status === "block") return ["BLOCKED · " + engage.category, "block"];
       if (engage.status === "flag") return ["FLAG · " + engage.category, "flag"];
@@ -78,7 +88,8 @@
         const card = tpl.querySelector(".card");
         const p = it.post;
 
-        tpl.querySelector(".platform").textContent = p.platform;
+        const platformEl = tpl.querySelector(".platform");
+        platformEl.innerHTML = platformIcon(p.platform) + "<span>" + fmt(p.platform) + "</span>";
         tpl.querySelector(".author").textContent = p.author;
         tpl.querySelector(".context").textContent = p.context || "";
         tpl.querySelector(".post-text").textContent = p.text;

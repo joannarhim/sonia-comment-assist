@@ -43,12 +43,12 @@ def _score_relevance_mock(post, note=""):
     text = (post.get("text", "") + " " + post.get("context", "")).lower()
     hits = [t for t in RELEVANT_TERMS if t in text]
 
-    if not hits: #nothing relevant
+    if not hits:  # nothing relevant
         score = 20 if any(t in text for t in PARTNER_TERMS) else 12
         reason = "No mental-health relevance signals found."
         return {"score": score, "reason": (reason + " " + note).strip()}
 
-    score = min(100, 25 + len(hits) * 15) #base + signal (override)
+    score = min(100, 25 + len(hits) * 15)          # base + signal
     if any(t in text for t in PARTNER_TERMS):
         score = min(100, score + 8)                # creators/partners are higher value
     reason = f"Matched {len(hits)} relevance signal(s): {', '.join(hits[:5])}."
@@ -79,15 +79,15 @@ def _draft_comment_mock(post):
 
     # Intentionally-bad draft to demonstrate the comment safety gate.
     if pid == "p09":
-        return ("Those swings really sound like you have bipolar disorder — the good "
+        return ("Those swings really sound like you have bipolar disorder, and the good "
                 "news is therapy can treat and basically cure that, you'll be fine!")
 
     if "waitlist" in text or "afford" in text or "$" in text or "money" in text:
         return ("The cost and waitlist barriers are so real, and it's frustrating that "
-                "wanting help isn't enough. Hope you find something that fits — you "
+                "wanting help isn't enough. Hope you find something that fits. You "
                 "deserve support that's actually reachable.")
     if "burnout" in text or "burned out" in text or "tired all the time" in text:
-        return ("Burnout is sneaky like that — it shows up as exhaustion and short fuses "
+        return ("Burnout is sneaky like that. It shows up as exhaustion and short fuses "
                 "before you name it. Came out the other side by getting support and "
                 "lowering the bar for a bit. You're not alone in this.")
     if "lonely" in text or "loneliness" in text or "make friends" in text:
@@ -95,14 +95,14 @@ def _draft_comment_mock(post):
                 "stuff (a recurring class, a regular cafe) helped me more than big events. "
                 "Rooting for you.")
     if "first" in text and ("therapy" in text or "appointment" in text or "session" in text):
-        return ("Booking that first session is genuinely the hardest part — that took "
+        return ("Booking that first session is genuinely the hardest part, and that took "
                 "courage. Mostly it's just a conversation to see if it's a fit. Hope it "
                 "goes well!")
     if "grief" in text or "lost my" in text:
         return ("The cereal-aisle line hit me. Grief really does ambush you on ordinary "
                 "days. Sending care to you in year one.")
     if "journaling" in text or "grounding routines" in text or "go-to" in text:
-        return ("Ten minutes of journaling is such an accessible place to start — love that "
+        return ("Ten minutes of journaling is such an accessible place to start, and I love that "
                 "it's working for you. Mine is a quick brain-dump list before the day starts. "
                 "Thanks for sharing this.")
     if "sunday" in text or ("anxiety" in text and "can't sleep" in text):
@@ -110,18 +110,18 @@ def _draft_comment_mock(post):
                 "routine and naming the thought instead of believing it has helped me. "
                 "Hope you find what works.")
     if "breathwork" in text or "box breathing" in text or "grounding" in text:
-        return ("Box breathing before meetings is underrated — love this. Mine is a quick "
+        return ("Box breathing before meetings is underrated, love this. Mine is a quick "
                 "walk + naming three things I can see. Great reminder.")
     if "therapy" in text or "cbt" in text:
         return ("Love this framing. The 'notice the thought, don't believe every thought' "
                 "idea is such a useful one to keep coming back to. (Full disclosure: I work "
-                "with Sonia, an AI mental-health support tool — this just resonated.)")
+                "with Sonia, an AI mental-health support tool, and this just resonated.)")
     if "night" in text or "schedule" in text or "shift" in text:
-        return ("The scheduling mismatch is such a real barrier — care that doesn't fit "
+        return ("The scheduling mismatch is such a real barrier. Care that doesn't fit "
                 "your hours basically doesn't exist for you. Hope you find something "
                 "flexible that respects a weird shift pattern.")
     # generic supportive fallback
-    return ("This really resonates — thanks for sharing it so honestly. Wishing you some "
+    return ("This really resonates, and thanks for sharing it so honestly. Wishing you some "
             "lighter days ahead.")
 
 
@@ -133,6 +133,7 @@ _SYSTEM_PROMPT = """You help the growth team at Sonia (an AI mental-health suppo
 write replies to public social posts. Rules:
 - Be SPECIFIC to the post, kind, and human. Sound like a real person, not a brand.
 - Keep it under ~300 characters. No hashtags, no links, no calls to action.
+- Do NOT use em dashes (—). Use commas, periods, or colons instead.
 - NEVER diagnose, never claim to cure/treat/prevent any condition, never give medical advice.
 - Do NOT pitch Sonia. Only if it's genuinely natural may you mention it, and ONLY with a \
 short transparency disclosure like "(I work with Sonia)".
