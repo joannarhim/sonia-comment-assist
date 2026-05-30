@@ -1,21 +1,7 @@
 """
 app.py
 ======
-Flask server that ties the pipeline together:
-
-    sample_posts.json
-          |
-          v
-    should_engage()  ---- block ----> (no draft; show reason to human)
-          | ok / flag
-          v
-    score_relevance()
-          |
-          v
-    draft_comment()  ----> check_comment()  ----> reviewer UI
-          |
-          v
-    save_decision() -> SQLite
+Flask server that ties the pipeline together (shown in readme.md)
 
 The reviewer can Approve / Edit / Reject / Mark unsafe. All decisions persist.
 """

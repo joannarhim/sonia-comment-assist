@@ -19,9 +19,7 @@ classifier as an additional layer (see README "What I'd build next").
 
 import re
 
-# ---------------------------------------------------------------------------
 # Rule sets. Kept readable on purpose so a non-engineer can audit them.
-# ---------------------------------------------------------------------------
 
 CRISIS_PATTERNS = [
     r"\bkill myself\b", r"\bend it\b", r"\bend my life\b", r"\bsuicid",

@@ -1,9 +1,9 @@
 """
 db.py
 =====
-Tiny SQLite layer for reviewer decisions. We store ONLY decisions (the posts and
+SQLite layer for reviewer decisions. Store ONLY decisions (the posts and
 AI analysis are recomputed/loaded at runtime) so the database stays small and
-auditable. Each decision row is an immutable-ish record of what a human chose.
+auditable.
 """
 
 import sqlite3

@@ -1,8 +1,5 @@
 :root {
-  /* Palette built on Sonia's confirmed brand background (#F8F6F2, warm cream).
-     Accent is a warm, calming complement chosen to fit Sonia's "emotional support"
-     tone — not a confirmed brand value, easy to swap if you get the exact hex. */
-  --bg: #f8f6f2;           /* Sonia warm cream (confirmed brand) */
+  --bg: #f8f6f2;           /* Sonia warm cream */
   --card: #ffffff;
   --ink: #2b2724;          /* warm near-black */
   --muted: #7a736b;        /* warm grey */

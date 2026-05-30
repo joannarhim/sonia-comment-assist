@@ -6,9 +6,9 @@ Two AI tasks:
   2. draft_comment(post)   -> a short, kind, specific, non-spammy comment
 
 Both run in MOCK mode by default so the app runs instantly with NO API key
-(great for graders). Set AI_MODE=anthropic and ANTHROPIC_API_KEY in .env to use
-a real LLM. The prompt we send the LLM encodes Sonia's voice + safety rules, so
-swapping mock -> real changes quality, not behavior.
+(great for graders). 
+Set AI_MODE=anthropic and ANTHROPIC_API_KEY in .env to use
+a real LLM. 
 """
 
 import os
@@ -26,9 +26,7 @@ RELEVANT_TERMS = [
 PARTNER_TERMS = ["coach", "creator", "writer", "founder", "potential partner", "followers"]
 
 
-# ---------------------------------------------------------------------------
 # Relevance scoring
-# ---------------------------------------------------------------------------
 
 def score_relevance(post):
     if AI_MODE == "anthropic":
@@ -55,9 +53,7 @@ def _score_relevance_mock(post, note=""):
     return {"score": score, "reason": (reason + " " + note).strip()}
 
 
-# ---------------------------------------------------------------------------
 # Comment drafting
-# ---------------------------------------------------------------------------
 
 def draft_comment(post):
     if AI_MODE == "anthropic":
@@ -124,10 +120,7 @@ def _draft_comment_mock(post):
     return ("This really resonates, and thanks for sharing it so honestly. Wishing you some "
             "lighter days ahead.")
 
-
-# ---------------------------------------------------------------------------
 # Real LLM path (Anthropic). Only used when AI_MODE=anthropic.
-# ---------------------------------------------------------------------------
 
 _SYSTEM_PROMPT = """You help the growth team at Sonia (an AI mental-health support tool) \
 write replies to public social posts. Rules:

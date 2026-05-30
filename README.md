@@ -1,14 +1,14 @@
 # Sonia Health: Comment-Assist Prototype
 
-A small human-in-the-loop tool that helps Sonia's growth team find relevant public
+Comment assist prototype that helps Sonia's growth team find relevant public
 posts, draft thoughtful comments, and **review every comment before anything is posted**.
 The goal is to *participate* in relevant conversations with comments that are specific, kind, useful, and safe.
 
-Because Sonia is a **mental-health** AI companion, the safety layer is the important: the
+Since Sonia is a **mental-health** AI companion, the safety layer is the important! The
 tool refuses to engage with crisis posts, minors, and acute-emergency situations, and a
 blocks any drafted comment that diagnoses, claims to cure/treat, or reads as spam.
 
-## Current Version (runs with no API key)
+## Set Up (runs with no API key)
 
 ```bash
 git clone https://github.com/joannarhim/sonia-comment-assist.git 
@@ -23,7 +23,7 @@ python app.py               #open http://127.0.0.1:5000
 
 Open the app at localhost URL: http://127.0.0.1:5000
 
-## Next Version (runs with API key)
+## Set Up (runs with API key)
 
 The app is currently in **mock mode** so a reviewer can run it instantly. To use a real LLM,
 set `AI_MODE=anthropic` and `ANTHROPIC_API_KEY` in `.env`. Behaviour (prompts, safety
@@ -40,10 +40,10 @@ rules) is identical.
 ## Architecture
 
 ```
-data/sample_posts.json
+ data/sample_posts.json
         │
         ▼
- safety.should_engage(post) ── block ──▶ no draft; reason shown to human
+ safety.should_engage(post) ── block ──▶ no draft
         │ ok / flag
         ▼
  ai_workflow.score_relevance(post)
@@ -61,7 +61,7 @@ data/sample_posts.json
 | `ai_workflow.py` | Relevance scoring + comment drafting (mock by default, Anthropic optional) |
 | `db.py` | SQLite store for reviewer decisions (seeds 3 example decisions on first run) |
 | `templates/index.html` + `static/style.css` | The review dashboard |
-| `data/sample_posts.json` | 20 synthetic posts (see below) |
+| `data/sample_posts.json` | 42 synthetic posts (see below) |
 
 ## Demo data
 
@@ -78,6 +78,17 @@ domestic-violence/privacy, grief, off-topic crypto, and a spam account.
 - **Flagged (drafted but needs care):** off-topic posts, spam/promo source accounts.
 - **Comment gate marks a draft `unsafe`** if it diagnoses, claims to cure/treat/prevent,
   reads as spam, or mentions Sonia without a transparency disclosure..
+
+### Tradeoffs & known limitations
+
+- **Keyword-based safety is not perfect:** The gates use transparent keyword rules, so paraphrased crisis 
+  slips through as safe. These are left in on purpose as the case for an LLM safety classifier in
+  production. Broadening rules also raises false positives (caught "at 14 weeks pregnant"
+  before tightening), which is inherent to keyword matching.
+- **Mock AI by default:** Scoring and drafting run in deterministic mock mode (no API key needed)
+  AI_MODE=anthropicuses a real LLM. Safety gates run identically in both.
+- **Relevance score is a placeholder:** score is hand-tuned for ranking, not calibrated.
+- **Single reviewer and local SQLite:** No authorization, multi-user, or per-platform comment rules.
 
 ## Endpoints
 
