@@ -4,8 +4,8 @@ Comment assist prototype that helps Sonia's growth team find relevant public
 posts, draft thoughtful comments, and **review every comment before anything is posted**.
 The goal is to *participate* in relevant conversations with comments that are specific, kind, useful, and safe.
 
-Since Sonia is a **mental-health** AI companion, the safety layer is the important! The
-tool refuses to engage with crisis posts, minors, and acute-emergency situations, and a
+Since Sonia is a **mental-health** AI companion, the safety layer is the important part! The
+tool refuses to engage with crisis posts, minors, and acute-emergency situations, and it
 blocks any drafted comment that diagnoses, claims to cure/treat, or reads as spam.
 
 ## Set Up (runs with no API key)
@@ -70,6 +70,7 @@ mock and not scraped from real people, which avoids using anyone's private infor
 still being realistic. They span across every safety category so the gates are
 visible: support-seeking, creators/partners, crisis, a minor, a diagnosis-bait post,
 domestic-violence/privacy, grief, off-topic crypto, and a spam account.
+A few sample reviewer decisions are seeded automatically the first time you run the app, so the dashboard isn't empty.
 
 ### Safety: what gets blocked vs flagged
 
@@ -77,7 +78,7 @@ domestic-violence/privacy, grief, off-topic crypto, and a spam account.
   emergencies (abuse in progress, ER/psych ward), privacy-sensitive posts (addresses, SSN).
 - **Flagged (drafted but needs care):** off-topic posts, spam/promo source accounts.
 - **Comment gate marks a draft `unsafe`** if it diagnoses, claims to cure/treat/prevent,
-  reads as spam, or mentions Sonia without a transparency disclosure..
+  reads as spam, or mentions Sonia without a transparency disclosure.
 
 ### Tradeoffs & known limitations
 
@@ -86,7 +87,7 @@ domestic-violence/privacy, grief, off-topic crypto, and a spam account.
   production. Broadening rules also raises false positives (caught "at 14 weeks pregnant"
   before tightening), which is inherent to keyword matching.
 - **Mock AI by default:** Scoring and drafting run in deterministic mock mode (no API key needed)
-  AI_MODE=anthropicuses a real LLM. Safety gates run identically in both.
+  AI_MODE=anthropic uses a real LLM. Safety gates run identically in both.
 - **Relevance score is a placeholder:** score is hand-tuned for ranking, not calibrated.
 - **Single reviewer and local SQLite:** No authorization, multi-user, or per-platform comment rules.
 

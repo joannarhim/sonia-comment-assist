@@ -1,9 +1,9 @@
 """
 db.py
 =====
-SQLite layer for reviewer decisions. Store ONLY decisions (the posts and
+Tiny SQLite layer for reviewer decisions. We store ONLY decisions (the posts and
 AI analysis are recomputed/loaded at runtime) so the database stays small and
-auditable.
+auditable. Each decision row is an immutable-ish record of what a human chose.
 """
 
 import sqlite3
@@ -41,16 +41,27 @@ def init_db(seed=True):
         if existing == 0:
             seeds = [
                 ("p19", "approved",
-                 "Booking that first session is genuinely the hardest part — that took "
+                 "Booking that first session is genuinely the hardest part, and that took "
                  "courage. Mostly it's just a conversation to see if it's a fit. Hope it goes well!",
                  "Warm and specific, no claims. Good to post."),
                 ("p01", "edited",
                  "The cost and waitlist barriers are so real. Hope you find support that's "
-                 "actually reachable — you deserve that.",
+                 "actually reachable, you deserve that.",
                  "Trimmed for length; kept it human."),
                 ("p09", "unsafe",
                  None,
-                 "Draft diagnosed bipolar and claimed a cure — hard reject, flagged to AI workflow."),
+                 "Draft diagnosed bipolar and claimed a cure. Hard reject, flagged to AI workflow."),
+                ("p25", "unsafe",
+                 None,
+                 "Keyword filter scored this 'safe', but a human reads it as a real crisis "
+                 "('how much longer I can hold on'). Marked unsafe: do not growth-comment. "
+                 "Route to a human for a care + 988 resources response. Example of why we need "
+                 "an LLM safety classifier."),
+                ("p26", "unsafe",
+                 None,
+                 "Reads like a goodbye message ('just know i tried my best'). No explicit crisis "
+                 "keywords so the filter missed it, but clearly needs human care, not a brand "
+                 "comment. Marked unsafe and escalated."),
             ]
             for pid, status, comment, note in seeds:
                 conn.execute(
